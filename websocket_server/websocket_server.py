@@ -10,6 +10,7 @@ import logging
 from socket import error as SocketError
 import errno
 import threading
+import uuid
 from socketserver import ThreadingMixIn, TCPServer, StreamRequestHandler
 
 from websocket_server.thread import WebsocketServerThread
@@ -134,7 +135,6 @@ class WebsocketServer(ThreadingMixIn, TCPServer, API):
         self.cert = cert
 
         self.clients = []
-        self.id_counter = 0
         self.thread = None
 
         self._deny_clients = False
@@ -176,9 +176,8 @@ class WebsocketServer(ThreadingMixIn, TCPServer, API):
             self._terminate_client_handler(handler)
             return
 
-        self.id_counter += 1
         client = {
-            'id': self.id_counter,
+            'id': str(uuid.uuid4().hex),
             'handler': handler,
             'address': handler.client_address
         }
