@@ -22,7 +22,7 @@ setup(
     url='https://github.com/lakshaya-wq/python-ws-server',
     license='MIT',
     author='Lakshaya Utreja',
-    author_email='manossef@gmail.com',
+    author_email='lakshayautreja@gmail.com',
     install_requires=[],
     description='A simple fully working websocket-server in Python with no external dependencies',
     platforms='any',
